@@ -80,55 +80,6 @@
             top: 0;
         }
         
-        .animation-container {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-        }
-        
-        .cpu {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(145deg, #121212, #1a1a1a);
-            border: 2px solid #B8860B;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 30px rgba(184, 134, 11, 0.3);
-            z-index: 10;
-        }
-        
-        .process {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            transition: all 0.5s ease;
-        }
-        
-        .ready-queue {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 60px;
-            border: 1px dashed #555;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
         .comparison-table th,
         .comparison-table td {
             padding: 12px;
@@ -260,7 +211,7 @@
         </div>
     </section>
 
-    <!-- How it Works Section -->
+    <!-- How it Works Section - SIMPLIFIED -->
     <section class="py-20 bg-darker">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-16 text-center hidden-element">
@@ -269,118 +220,36 @@
             </h2>
             
             <div class="hidden-element">
-                <div class="animation-container mb-16" id="rr-animation">
-                    <div class="cpu">
-                        <span class="text-dark-gold font-bold">CPU</span>
-                    </div>
+                <div class="mb-12 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-8 text-light-gold text-center">Round Robin Algorithm Steps</h3>
                     
-                    <div class="process" style="background-color: #DC2626; top: 50px; left: 100px;" id="p1">P1</div>
-                    <div class="process" style="background-color: #2563EB; top: 100px; left: 150px;" id="p2">P2</div>
-                    <div class="process" style="background-color: #16A34A; top: 150px; left: 80px;" id="p3">P3</div>
-                    <div class="process" style="background-color: #9333EA; top: 200px; left: 120px;" id="p4">P4</div>
-                    
-                    <div class="ready-queue">
-                        <div id="queue-label" class="absolute -top-6 left-0 text-sm text-gray-400">Ready Queue</div>
-                    </div>
-                </div>
-                
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold mb-4 text-light-gold">Round Robin Algorithm Steps</h3>
-                    <div class="relative">
-                        <div class="timeline mb-8" id="timeline">
-                            <!-- Timeline markers will be added by JavaScript -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="bg-dark p-6 rounded-lg border-t-4 border-dark-gold">
+                            <div class="text-2xl font-bold mb-3 text-center">Step 1</div>
+                            <p class="text-center">Processes are placed in a <strong>circular queue</strong> (FIFO order)</p>
                         </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-12">
-                            <div class="bg-dark p-4 rounded-lg border-t-4 border-dark-gold">
-                                <div class="text-2xl font-bold mb-2">Step 1</div>
-                                <p>Processes are placed in a <strong>circular queue</strong> (FIFO order)</p>
-                            </div>
-                            
-                            <div class="bg-dark p-4 rounded-lg border-t-4 border-dark-gold">
-                                <div class="text-2xl font-bold mb-2">Step 2</div>
-                                <p>CPU is allocated to a process for a <strong>time quantum</strong></p>
-                            </div>
-                            
-                            <div class="bg-dark p-4 rounded-lg border-t-4 border-dark-gold">
-                                <div class="text-2xl font-bold mb-2">Step 3</div>
-                                <p>After time quantum expires, process is <strong>preempted</strong></p>
-                            </div>
-                            
-                            <div class="bg-dark p-4 rounded-lg border-t-4 border-dark-gold">
-                                <div class="text-2xl font-bold mb-2">Step 4</div>
-                                <p>Process is placed at the <strong>end of the queue</strong></p>
-                            </div>
+                        <div class="bg-dark p-6 rounded-lg border-t-4 border-dark-gold">
+                            <div class="text-2xl font-bold mb-3 text-center">Step 2</div>
+                            <p class="text-center">CPU is allocated to a process for a <strong>time quantum</strong></p>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hidden-element mt-16">
-                <h3 class="text-2xl font-bold mb-6 text-light-gold">Example Scenario</h3>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="bg-dark rounded-lg p-6">
-                        <h4 class="font-bold mb-4">Process Details</h4>
-                        <table class="w-full">
-                            <thead>
-                                <tr class="border-b border-gray-700">
-                                    <th class="py-2 text-left">Process</th>
-                                    <th class="py-2 text-left">Burst Time</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-gray-700">
-                                    <td class="py-2">P1</td>
-                                    <td class="py-2">24 ms</td>
-                                </tr>
-                                <tr class="border-b border-gray-700">
-                                    <td class="py-2">P2</td>
-                                    <td class="py-2">3 ms</td>
-                                </tr>
-                                <tr class="border-b border-gray-700">
-                                    <td class="py-2">P3</td>
-                                    <td class="py-2">3 ms</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="mt-4 text-sm text-gray-400">
-                            Time Quantum = 4ms
+                        
+                        <div class="bg-dark p-6 rounded-lg border-t-4 border-dark-gold">
+                            <div class="text-2xl font-bold mb-3 text-center">Step 3</div>
+                            <p class="text-center">After time quantum expires, process is <strong>preempted</strong></p>
+                        </div>
+                        
+                        <div class="bg-dark p-6 rounded-lg border-t-4 border-dark-gold">
+                            <div class="text-2xl font-bold mb-3 text-center">Step 4</div>
+                            <p class="text-center">Process is placed at the <strong>end of the queue</strong></p>
                         </div>
                     </div>
                     
-                    <div class="lg:col-span-2 bg-dark rounded-lg p-6">
-                        <h4 class="font-bold mb-4">Gantt Chart</h4>
-                        <div class="relative">
-                            <div class="flex h-12 mb-6">
-                                <div class="bg-red-600 flex-grow-0 flex-shrink-0 w-1/6 flex items-center justify-center text-white font-bold">P1</div>
-                                <div class="bg-blue-600 flex-grow-0 flex-shrink-0 w-1/6 flex items-center justify-center text-white font-bold">P2</div>
-                                <div class="bg-green-600 flex-grow-0 flex-shrink-0 w-1/6 flex items-center justify-center text-white font-bold">P3</div>
-                                <div class="bg-red-600 flex-grow-0 flex-shrink-0 w-1/6 flex items-center justify-center text-white font-bold">P1</div>
-                                <div class="bg-red-600 flex-grow-0 flex-shrink-0 w-1/6 flex items-center justify-center text-white font-bold">P1</div>
-                                <div class="bg-red-600 flex-grow-0 flex-shrink-0 w-1/6 flex items-center justify-center text-white font-bold">P1</div>
-                            </div>
-                            
-                            <div class="flex justify-between text-sm text-gray-400">
-                                <div>0</div>
-                                <div>4</div>
-                                <div>7</div>
-                                <div>10</div>
-                                <div>14</div>
-                                <div>18</div>
-                                <div>22</div>
-                            </div>
-                            
-                            <div class="mt-6">
-                                <h5 class="font-medium mb-2">Results:</h5>
-                                <ul class="space-y-1 text-sm">
-                                    <li><span class="text-red-400">P1</span> Waiting Time: 10ms, Turnaround Time: 34ms</li>
-                                    <li><span class="text-blue-400">P2</span> Waiting Time: 4ms, Turnaround Time: 7ms</li>
-                                    <li><span class="text-green-400">P3</span> Waiting Time: 7ms, Turnaround Time: 10ms</li>
-                                    <li class="pt-2 text-light-gold">Average Waiting Time: 7ms</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="mt-10 p-6 bg-dark rounded-lg border border-gray-800">
+                        <p class="text-center text-lg">
+                            This cycle continues until all processes complete their execution. If a process completes before its time quantum expires, 
+                            the CPU immediately moves to the next process in the queue.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -679,10 +548,6 @@
                                 <div>• Flexible for different process types</div>
                                 <div>• Can combine algorithms</div>
                             </td>
-                            <td class="py-4">
-                                <div>• Complex implementation</div>
-                                <div>• Potential starvation</div>
-                            </td>
                             <td class="py-4">Systems with varied process types (foreground/background)</td>
                         </tr>
                     </tbody>
@@ -804,7 +669,7 @@
             
             <div class="hidden-element">
                 <a href="rr.html" class="inline-block bg-dark-gold hover:bg-light-gold text-black font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg">
-                    Launch Simulator
+                    Open Simulator
                 </a>
             </div>
         </div>
@@ -829,9 +694,7 @@
                 </div>
             </div>
             
-            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-                &copy; 2025 Round Robin Scheduling Algorithm. All rights reserved.
-            </div>
+            
         </div>
     </footer>
 
@@ -876,118 +739,6 @@
                 duration: 0.8,
                 ease: "power2.out"
             });
-        });
-        
-        // Round Robin Animation
-        function animateRoundRobin() {
-            const processes = ["p1", "p2", "p3", "p4"];
-            const colors = ["#DC2626", "#2563EB", "#16A34A", "#9333EA"];
-            const timeline = gsap.timeline({repeat: -1});
-            
-            // Create timeline markers
-            const timelineEl = document.getElementById('timeline');
-            for (let i = 0; i <= 20; i += 4) {
-                const marker = document.createElement('div');
-                marker.className = 'timeline-marker';
-                marker.style.left = `${(i / 20) * 100}%`;
-                timelineEl.appendChild(marker);
-                
-                const label = document.createElement('div');
-                label.className = 'timeline-label';
-                label.textContent = i;
-                label.style.left = `${(i / 20) * 100}%`;
-                timelineEl.appendChild(label);
-            }
-            
-            // Create quantum blocks
-            for (let i = 0; i < 5; i++) {
-                for (let j = 0; j < processes.length; j++) {
-                    if (i * 4 + j < 20) { // Only create blocks up to time 20
-                        const block = document.createElement('div');
-                        block.className = 'quantum-block';
-                        block.style.left = `${((i * 4 + j) / 20) * 100}%`;
-                        block.style.width = `${(1 / 20) * 100}%`;
-                        block.style.backgroundColor = colors[j % colors.length];
-                        block.style.opacity = "0";
-                        timelineEl.appendChild(block);
-                        
-                        timeline.to(block, {
-                            opacity: 1,
-                            duration: 0.5,
-                            delay: (i * 4 + j) * 0.5
-                        });
-                    }
-                }
-            }
-            
-            // Ready queue
-            const readyQueue = document.querySelector('.ready-queue');
-            
-            // Initial positions
-            processes.forEach((process, index) => {
-                const el = document.getElementById(process);
-                gsap.set(el, {
-                    x: 0,
-                    y: 0,
-                    scale: 1,
-                    opacity: 1
-                });
-            });
-            
-            // Animation sequence
-            let queuePosition = 0;
-            
-            // Repeat for multiple rounds
-            for (let round = 0; round < 2; round++) {
-                processes.forEach((process, index) => {
-                    // Add to queue
-                    timeline.to(`#${process}`, {
-                        x: 20 + (queuePosition * 60),
-                        y: readyQueue.offsetTop - 100,
-                        duration: 1,
-                        ease: "power2.inOut"
-                    });
-                    
-                    queuePosition++;
-                    
-                    // Move to CPU
-                    timeline.to(`#${process}`, {
-                        x: document.querySelector('.cpu').offsetLeft - 50,
-                        y: document.querySelector('.cpu').offsetTop - 100,
-                        scale: 1.2,
-                        duration: 1,
-                        ease: "power2.inOut"
-                    });
-                    
-                    // Process execution (rotate)
-                    timeline.to(`#${process}`, {
-                        rotation: 360,
-                        duration: 1.5,
-                        ease: "none"
-                    }, "-=0.5");
-                    
-                    // If not last process in round, move back to queue
-                    if (!(round == 1 && index == processes.length - 1)) {
-                        timeline.to(`#${process}`, {
-                            x: 20 + (queuePosition * 60),
-                            y: readyQueue.offsetTop - 100,
-                            scale: 1,
-                            duration: 1,
-                            ease: "power2.inOut"
-                        });
-                    }
-                });
-            }
-            
-            return timeline;
-        }
-        
-        // Start animation when in view
-        ScrollTrigger.create({
-            trigger: "#rr-animation",
-            start: "top 80%",
-            onEnter: () => animateRoundRobin(),
-            onLeave: () => gsap.globalTimeline.clear()
         });
         
         // Particles animation for hero background
