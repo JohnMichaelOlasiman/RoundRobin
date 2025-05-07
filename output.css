@@ -1078,50 +1078,6 @@ body {
   box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
 }
 
-.btn-secondary {
-  background-color: var(--secondary);
-  color: #000;
-}
-
-.btn-secondary:hover {
-  background-color: #E0B030;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(240, 192, 64, 0.3);
-}
-
-.btn-success {
-  background-color: var(--success);
-  color: white;
-}
-
-.btn-success:hover {
-  background-color: #3D8B40;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
-}
-
-.btn-danger {
-  background-color: var(--danger);
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #D32F2F;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
-}
-
-.btn-info {
-  background-color: var(--info);
-  color: white;
-}
-
-.btn-info:hover {
-  background-color: #1976D2;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
-}
-
 .btn-outline {
   background-color: transparent;
   border: 2px solid var(--primary);
@@ -1216,7 +1172,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align the gantt chart */
+  align-items: center;
 }
 
 .gantt-header {
@@ -1236,8 +1192,8 @@ body {
 .gantt-chart {
   display: flex;
   position: relative;
-  min-height: 60px; /* Reduced height */
-  margin-bottom: 25px; /* Reduced space for time markers below */
+  min-height: 60px;
+  margin-bottom: 25px;
 }
 
 .gantt-block {
@@ -1252,7 +1208,7 @@ body {
   transform: scaleX(0.9);
   transform-origin: left;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  border: 1px solid #000; /* Reduced thickness of outline */
+  border: 1px solid #000;
 }
 
 .gantt-block.animate {
@@ -1264,7 +1220,7 @@ body {
 .gantt-timeline {
   position: relative;
   height: 25px;
-  margin-top: 5px; /* Reduced space between blocks and timeline */
+  margin-top: 5px;
   border-top: 1px solid var(--border);
   width: 100%;
 }
@@ -1281,11 +1237,11 @@ body {
 .time-label {
   position: absolute;
   transform: translateX(-50%);
-  top: 10px; /* Position below the marker */
+  top: 10px;
   font-size: 0.75rem;
   color: var(--primary-light);
-  min-width: 20px; /* Ensure the label has minimum width */
-  text-align: center; /* Center the text */
+  min-width: 20px;
+  text-align: center;
 }
 
 /* Process Colors with Gradients */
@@ -1395,13 +1351,6 @@ body {
   z-index: 2;
 }
 
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
 /* Tabs */
 .tabs {
   display: flex;
@@ -1410,6 +1359,7 @@ body {
   margin-bottom: 1.5rem;
   flex-wrap: nowrap;
   width: 100%;
+  overflow-x: auto;
 }
 
 .tab {
@@ -1539,6 +1489,124 @@ body {
   z-index: 2;
 }
 
+/* NEW STYLES FOR IMPROVED TABLES */
+.metric-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.metric-table th {
+  background: linear-gradient(135deg, #2A2A2A 0%, #333333 100%);
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary-dark);
+}
+
+.metric-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background-color: #252525;
+}
+
+.metric-table tr:last-child td {
+  border-bottom: none;
+}
+
+.metric-table tr:hover td {
+  background-color: #2d2d2d;
+}
+
+.metric-value-cell {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--primary-light);
+  text-align: right;
+}
+
+.process-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  color: #000;
+  margin-right: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.metric-card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.metric-card-small {
+  flex: 1;
+  min-width: 200px;
+  background: linear-gradient(135deg, #252525 0%, #1A1A1A 100%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+}
+
+.metric-title {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.metric-value-large {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.calculation-steps {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, rgba(184, 134, 11, 0.05) 0%, rgba(184, 134, 11, 0.01) 100%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid rgba(184, 134, 11, 0.2);
+}
+
+.calculation-title {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.step-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calculation-step {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.calculation-step.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -1616,10 +1684,6 @@ body {
     flex-direction: column;
   }
   
-  .metrics-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .tabs {
     overflow-x: auto;
     justify-content: flex-start;
@@ -1629,4 +1693,152 @@ body {
     flex: none;
     padding: 1rem;
   }
+
+  .metric-card-row {
+    flex-direction: column;
+  }
+}
+
+.gantt-time {
+    font-size: 0.7rem;
+    display: block;
+    margin-top: 0.25rem;
+    opacity: 0.8;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* NEW STYLES FOR READY QUEUE */
+.ready-queue-container {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.ready-queue-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.ready-queue-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-left: 1rem;
+}
+
+.ready-queue {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 215, 0, 0.05);
+    border: 2px dashed var(--primary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-height: 80px;
+    position: relative;
+}
+
+.ready-queue-empty {
+    color: var(--text-secondary);
+    font-style: italic;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.process-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: 600;
+    margin: 0 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.process-circle.active {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.process-info {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.process-remaining {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: var(--primary-light);
+    white-space: nowrap;
+}
+
+.animation-container {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.process-animation {
+    position: absolute;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid var(--primary);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.step-info {
+    background-color: rgba(184, 134, 11, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--primary);
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.error {
+    border-color: var(--danger) !important;
+    animation: shake 0.5s linear;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
 }
